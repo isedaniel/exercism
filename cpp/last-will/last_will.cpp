@@ -44,5 +44,14 @@ namespace garcia {
 
 // Enter your code below
 
-namespace estate_executor {}
+namespace estate_executor {
+    int assemble_account_number(int secret_modifier) {
+        return garcia::bank_number_part(secret_modifier) + khan::bank_number_part(secret_modifier) + zhang::bank_number_part(secret_modifier);
+}
+    int assemble_code() {
+        int blues{garcia::blue::code_fragment() + khan::blue::code_fragment() + zhang::blue::code_fragment()};
+        int reds{garcia::red::code_fragment() + khan::red::code_fragment() + zhang::red::code_fragment()};
+        return blues * reds;
+
+}
 
