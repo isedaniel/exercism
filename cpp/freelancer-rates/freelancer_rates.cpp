@@ -6,6 +6,7 @@
 
 namespace Consts {
     double hours_per_day{8.0};
+    int days_per_month{22};
 }
 
 // daily_rate calculates the daily rate given an hourly rate
@@ -21,7 +22,8 @@ double apply_discount(double before_discount, double discount) {
 // monthly_rate calculates the monthly rate, given an hourly rate and a discount
 // The returned monthly rate is rounded up to the nearest integer.
 int monthly_rate(double hourly_rate, double discount) {
-    return std::ceil(daily_rate(hourly_rate) * 22 * (1 - discount / 100));
+    double daily{apply_discount(daily_rate(hourly_rate), discount)};
+    return std::ceil(daily * Consts::days_per_month);
 }
 
 // days_in_budget calculates the number of workdays given a budget, hourly rate,
