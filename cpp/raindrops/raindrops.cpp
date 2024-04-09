@@ -14,6 +14,6 @@ namespace raindrops {
     if (sound.empty())
         return std::to_string(i);
     return sound;
-}
+    }
 
 }  // namespace raindrops
