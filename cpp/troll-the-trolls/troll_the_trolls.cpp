@@ -1,14 +1,21 @@
 namespace hellmath {
 
-// TODO: Task 1 - Define an `AccountStatus` enumeration to represent the four
-// account types: `troll`, `guest`, `user`, and `mod`.
+enum class AccountStatus {
+  troll,
+  user,
+  guest,
+  mod,
+};
 
-// TODO: Task 1 - Define an `Action` enumeration to represent the three
-// permission types: `read`, `write`, and `remove`.
+enum class Action{
+  read,
+  write,
+  remove,
+};
 
-// TODO: Task 2 - Implement the `display_post` function, that gets two arguments
-// of `AccountStatus` and returns a `bool`. The first argument is the status of
-// the poster, the second one is the status of the viewer.
+bool display_post(AccountStatus s1, AccountStatus s2) {
+  return s1 == s2;
+}
 
 // TODO: Task 3 - Implement the `permission_check` function, that takes an
 // `Action` as a first argument and an `AccountStatus` to check against. It
@@ -21,6 +28,5 @@ namespace hellmath {
 // TODO: Task 5 - Implement the `has_priority` function that takes two
 // `AccountStatus` arguments and returns `true`, if and only if the first
 // account has a strictly higher priority than the second.
-
 
 }  // namespace hellmath
