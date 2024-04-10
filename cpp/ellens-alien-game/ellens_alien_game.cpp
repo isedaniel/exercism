@@ -9,7 +9,7 @@ class Alien {
   int get_health() { return health; }
 
   bool hit() {
-    --health;
+    if (health > 0) --health;
     return true;
   }
 
