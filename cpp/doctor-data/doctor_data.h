@@ -1,3 +1,31 @@
-// ERROR: FILE CORRUPTED. Please supply valid C++ Code.
+#include <string>
 
-hp1,üapöhp2ö%Äcountöiöma1,öhp2ö%Älawöhp3öö/önextöstepö%Ädacöiöml1ö%Älawö7ö%Ädacöiömb1ö%Ärandomöö%Äscrö9sö%Äsirö9sö%Äxctöhr1ö%Äaddöiömx1ö%Ädacöiömx1ö%Äswapö%Äaddöiömy1ö%Ädacöiömy1ö%Ärandomö%Äscrö9sö%Äsirö9sö%Äxctöhr2ö%Ädacöiömdyö%Ädioöiömdxö%Äsetupö.hpt,3ö%Älacöranö%Ädacöiömth
+namespace star_map {
+enum class System {
+  AlphaCentauri,
+  BetaHydri,
+  DeltaEridani,
+  EpsilonEridani,
+  Omicron2Eridani,
+  Sol,
+};
+}
+
+namespace heaven {
+class Vessel {
+ public:
+  Vessel(std::string nam, int gen,
+         star_map::System sys = star_map::System::Sol);
+  heaven::Vessel replicate(std::string str);
+  void make_buster();
+  bool shoot_buster();
+
+  std::string name{};
+  int generation{};
+  star_map::System current_system{};
+  int busters{0};
+};
+std::string get_older_bob(heaven::Vessel v1, heaven::Vessel v2);
+bool in_the_same_system(heaven::Vessel v1, heaven::Vessel v2);
+
+}  // namespace heaven
