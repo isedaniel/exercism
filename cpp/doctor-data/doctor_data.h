@@ -14,8 +14,8 @@ enum class System {
 namespace heaven {
 class Vessel {
  public:
-  Vessel(std::string nam, int gen,
-         star_map::System sys = star_map::System::Sol);
+  Vessel(std::string name, int generation,
+         star_map::System current_system = star_map::System::Sol);
   heaven::Vessel replicate(std::string str);
   void make_buster();
   bool shoot_buster();
@@ -25,7 +25,7 @@ class Vessel {
   star_map::System current_system{};
   int busters{0};
 };
-std::string get_older_bob(heaven::Vessel v1, heaven::Vessel v2);
-bool in_the_same_system(heaven::Vessel v1, heaven::Vessel v2);
 
+std::string get_older_bob(const Vessel& v1, const Vessel& v2);
+bool in_the_same_system(const Vessel& v1, const Vessel& v2);
 }  // namespace heaven

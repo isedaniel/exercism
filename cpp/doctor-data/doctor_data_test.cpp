@@ -39,6 +39,3 @@ TEST_CASE("Check non-class functions", "[task_4]") {
   REQUIRE(heaven::in_the_same_system(marv, milo));
   REQUIRE_FALSE(heaven::in_the_same_system(marv, howie));
 }
-
-#if defined(EXERCISM_RUN_ALL_TESTS)
-#endif
