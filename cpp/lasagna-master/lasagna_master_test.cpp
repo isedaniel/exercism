@@ -58,7 +58,6 @@ TEST_CASE("quantities: few layers", "[task_2]") {
   REQUIRE(amount.noodles == expNoodles);
 }
 
-#if defined(EXERCISM_RUN_ALL_TESTS)
 TEST_CASE("quantities: many layers", "[task_2]") {
   std::vector<std::string> layers{
       "sauce",   "noodles",  "béchamel", "meat",    "mozzarella", "noodles",
@@ -141,4 +140,5 @@ TEST_CASE("Adds secret string ingredient", "[task_5]") {
   REQUIRE(myList == expected);
 }
 
+#if defined(EXERCISM_RUN_ALL_TESTS)
 #endif
