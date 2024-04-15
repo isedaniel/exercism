@@ -9,28 +9,30 @@ double sauce{.2};
 }  // namespace Consts
 
 namespace lasagna_master {
-int preparationTime(std::vector<std::string> layers, int time) {
+using ingredients = std::vector<std::string>;
+
+int preparationTime(const ingredients& layers, int time) {
   return layers.size() * time;
 }
 
-amount quantities(std::vector<std::string> layers) {
+amount quantities(const ingredients& layers) {
   int noodles{};
-  int sauce{};
-  for (int i{}, size = layers.size(); i < size; ++i) {
-    if (layers.at(i) == "noodles") ++noodles;
-    if (layers.at(i) == "sauce") ++sauce;
+  double sauce{};
+  for (auto &layer: layers){
+    if (layer == "noodles") noodles += Consts::noodles;
+    else if (layer == "sauce") sauce += Consts::sauce;
   }
 
-  return amount{noodles * Consts::noodles, sauce * Consts::sauce};
+  return amount{noodles, sauce};
 }
 
-void addSecretIngredient(std::vector<std::string>& myList,
-                         const std::vector<std::string>& friendsList) {
+void addSecretIngredient(ingredients& myList,
+                         const ingredients& friendsList) {
   myList.pop_back();
   myList.push_back(friendsList.at(friendsList.size() - 1));
 }
 
-void addSecretIngredient(std::vector<std::string>& myList,
+void addSecretIngredient(ingredients& myList,
                          const std::string& secretIngredient) {
   myList.pop_back();
   myList.push_back(secretIngredient);

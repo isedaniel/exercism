@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 
+using ingredients = std::vector<std::string>;
+
 namespace lasagna_master {
 
 struct amount {
@@ -9,11 +11,12 @@ struct amount {
   double sauce;
 };
 
-int preparationTime(std::vector<std::string> layers, int time = 2);
-amount quantities(std::vector<std::string> layers);
-void addSecretIngredient(std::vector<std::string>& myList,
-                         const std::vector<std::string>& friendsList);
-void addSecretIngredient(std::vector<std::string>& myList,
+using ingredients = std::vector<std::string>;
+int preparationTime(const ingredients& layers, int time = 2);
+amount quantities(const ingredients& layers);
+void addSecretIngredient(ingredients& myList,
+                         const ingredients& friendsList);
+void addSecretIngredient(ingredients& myList,
                          const std::string& secretIngredient);
 std::vector<double> scaleRecipe(const std::vector<double>& quantities,
                                 int scale);
