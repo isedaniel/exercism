@@ -1,3 +1,4 @@
 test/
 .exercism/
 build/
+.gradle/
