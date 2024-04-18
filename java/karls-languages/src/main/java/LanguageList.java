@@ -5,7 +5,7 @@ public class LanguageList {
     private final List<String> languages = new ArrayList<>();
 
     public boolean isEmpty() {
-        return languages.size() == 0;
+        return languages.isEmpty();
     }
 
     public void addLanguage(String language) {
