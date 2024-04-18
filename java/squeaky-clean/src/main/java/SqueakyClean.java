@@ -3,7 +3,7 @@ import static java.util.Map.entry;
 class SqueakyClean {
     public static Map<Integer, Character> leet = Map.ofEntries(
             entry(0, 'o'),
-            entry(),
+            entry(1, 'i'),
     );
 
     static String clean(String identifier) {
