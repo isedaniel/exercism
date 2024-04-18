@@ -27,9 +27,11 @@ class BirdWatcher {
     }
 
     public int getCountForFirstDays(int numberOfDays) {
-        int n = (numberOfDays > birdsPerDay.length)? birdsPerDay.length : numberOfDays;
+        if (numberOfDays > birdsPerDay.length) 
+            numberOfDays = birdsPerDay.length;
+
         int sum = 0;
-        for (int i=0; i < n; i++) {
+        for (int i=0; i < numberOfDays; i++) {
             sum += birdsPerDay[i];
         }
         return sum;
