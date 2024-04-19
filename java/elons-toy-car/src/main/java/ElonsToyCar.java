@@ -18,8 +18,8 @@ public class ElonsToyCar {
 
     public void drive() {
         if (this.battery > 0) {
-            distance += 20;
-            battery--;
+            this.distance += 20;
+            this.battery--;
         }
     }
 }
