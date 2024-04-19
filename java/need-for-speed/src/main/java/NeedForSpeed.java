@@ -24,6 +24,10 @@ class NeedForSpeed {
         } 
     }
 
+    public int possibleDistance() {
+        return this.speed * (this.battery / this.batteryDrain);
+    }
+
     public static NeedForSpeed nitro() {
         return new NeedForSpeed(50, 4);
     }
@@ -37,9 +41,6 @@ class RaceTrack {
     }
 
     public boolean tryFinishTrack(NeedForSpeed car) {
-        while (!car.batteryDrained()) {
-            car.drive();
-        }
-        return car.distanceDriven() >= this.distance;
+        return car.possibleDistance() >= this.distance;
     }
 }
