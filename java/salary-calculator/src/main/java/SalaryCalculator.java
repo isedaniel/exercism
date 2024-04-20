@@ -12,7 +12,7 @@ public class SalaryCalculator {
     }
 
     public double finalSalary(int daysSkipped, int productsSold) {
-        double base = 1000;
-        return base * salaryMultiplier(daysSkipped) + bonusForProductsSold(productsSold);
-    } 
+        double salary = 1000 * salaryMultiplier(daysSkipped) + bonusForProductsSold(productsSold);
+        return (salary > 2000) ? 2000 : base;
+    }
 }
