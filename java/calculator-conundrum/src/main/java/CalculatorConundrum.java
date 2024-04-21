@@ -5,7 +5,7 @@ class CalculatorConundrum {
         if (operation == "")
             throw new IllegalArgumentException("Operation cannot be empty");
         if (operand2 == 0)
-            throw new IllegalOperationException("Division by zero is not allowed");
+            throw new IllegalOperationException("Division by zero is not allowed", new ArithmeticException());
 
         switch (operation){
             case "+":
@@ -13,14 +13,10 @@ class CalculatorConundrum {
             case "*":
                 return operand1 + " * " + operand2 + " = " + operand1 * operand2;
             case "/":
-                try {
-                    return operand1 + " / " + operand2 + " = " + operand1 / operand2;
-                }
-                catch (ArithmeticException e) {
-                    throw new IllegalOperationException("Something", e.getCause());
-                }
+                return operand1 + " / " + operand2 + " = " + operand1 / operand2;
             default:
                 throw new IllegalOperationException("Operation '" + operation + "' does not exist");
         }
     }
 }
+
