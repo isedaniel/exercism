@@ -1,16 +1,11 @@
 class Fighter {
+    boolean isVulnerable() { return false; }
 
-    boolean isVulnerable() {
-        return true;
-    }
+    int getDamagePoints(Fighter fighter) { return 1; }
 
-    int getDamagePoints(Fighter fighter) {
-        return 1;
-    }
 }
 
 class Warrior extends Fighter {
-
     @Override
     boolean isVulnerable() { return false; }
 
@@ -19,23 +14,26 @@ class Warrior extends Fighter {
         return (fighter.isVulnerable())? 10 : 6;
     }
 
-    @Override
-    public String toString() { return "Fighter is a Warrior"; }
+    @Override 
+    public String toString() { 
+        return "Fighter is a " + getClass().getSimpleName();
+    }
 }
 
 class Wizard extends Fighter {
     boolean spellPrepared = false;
 
     @Override
-    boolean isVulnerable() { return !spellPrepared; }
+    public boolean isVulnerable() { return !spellPrepared; }
 
     @Override
     int getDamagePoints(Fighter fighter) {
         return (this.spellPrepared)? 12 : 3;
     }
-
-    @Override
-    public String toString() { return "Fighter is a Wizard"; }
-
     void prepareSpell() { spellPrepared = true; }
+
+    @Override 
+    public String toString() { 
+        return "Fighter is a " + getClass().getSimpleName();
+    }
 }
