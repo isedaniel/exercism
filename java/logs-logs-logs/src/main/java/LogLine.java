@@ -1,13 +1,17 @@
 public class LogLine {
+    private String message;
+    private LogLevel lvl;
 
     public LogLine(String logLine) {
+        this.message = logLine.split(": ")[1];
+        this.lvl = LogLevel.getLogLevelFromString(logLine.substring(1, logLine.indexOf(']')));
     }
 
     public LogLevel getLogLevel() {
-        throw new UnsupportedOperationException("Please implement the getLogLevel() method");
+        return this.lvl;
     }
 
     public String getOutputForShortLog() {
-        throw new UnsupportedOperationException("Please implement the getOutputForShortLog() method");
+        return this.lvl.getLogLevelInt() + ":" + message;
     }
 }
