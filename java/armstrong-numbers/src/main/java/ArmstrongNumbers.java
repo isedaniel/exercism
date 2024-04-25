@@ -1,9 +1,13 @@
 class ArmstrongNumbers {
 
-    boolean isArmstrongNumber(int numberToCheck) {
-
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
-
+    boolean isArmstrongNumber(int number) {
+        char[] numbers = Integer.toString(number).toCharArray();
+        int size = numbers.length;
+        int armstrong = 0;
+        for (var n : numbers) {
+            armstrong += Math.pow(Character.getNumericValue(n), size);
+        }
+        return armstrong == number;
     }
 
 }
