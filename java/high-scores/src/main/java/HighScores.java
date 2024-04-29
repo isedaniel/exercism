@@ -1,16 +1,18 @@
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Collections;
+import java.util.ArrayList;
 
 class HighScores {
     private List<Integer> scores;
-    private int[] sorted;
+    private List<Integer> topThree;
 
     public HighScores(List<Integer> highScores) {
         this.scores = highScores;
-        int[] sort = highScores.stream().mapToInt(i->i).toArray();
-        quickSort(sort, 0, sort.length - 1);
-        this.sorted = sort;
+
+        this.topThree = new ArrayList<Integer>(highScores);
+        Collections.sort(topThree);
+        Collections.reverse(topThree);
+        this.topThree = topThree.subList(0, (topThree.size() > 2)? 3:topThree.size());
     }
 
     List<Integer> scores() {
@@ -22,49 +24,11 @@ class HighScores {
     }
 
     Integer personalBest() {
-        int best = 0;
-        for (var score : this.scores) {
-            if (score > best) best = score;
-        }
-        return best;
-    }
-
-    void quickSort(int[] arr, int start, int end) {
-        // base case
-        if (end <= start) return;
-
-        int pivot = partition(arr, start, end); 
-        quickSort(arr, start, pivot - 1);
-        quickSort(arr, pivot + 1, end);
-    }
-
-    int partition(int[] arr, int start, int end) {
-        int pivot = arr[end];
-        int i = start - 1;
-
-        for (int j = start; j < end; j++){
-            if (arr[j] < pivot) {
-                i++;
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-        i++;
-        int temp = arr[i];
-        arr[i] = arr[end];
-        arr[end] = temp;
-
-        return i;
+        return Collections.max(this.scores);
     }
 
     List<Integer> personalTopThree() {
-        int[] topThree = new int[3];
-        for (int i=this.sorted.length - 1, j=0; i > this.sorted.length - 4; i--){
-            topThree[j] = this.sorted[i];
-            j++;
-        }
-        return Arrays.stream(topThree).boxed().toList();
+        return topThree;
     }
 
 }
