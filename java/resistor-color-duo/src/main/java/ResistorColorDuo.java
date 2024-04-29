@@ -1,5 +1,11 @@
 class ResistorColorDuo {
+    enum Colors {
+        black, brown, red, orange, yellow, green, blue, violet, grey, white
+    }
+
     int value(String[] colors) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        return Colors.valueOf(colors[0]).ordinal() * 10 +
+            Colors.valueOf(colors[1]).ordinal();
+
     }
 }
