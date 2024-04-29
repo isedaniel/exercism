@@ -1,18 +1,23 @@
+import java.util.Comparator;
 import java.util.List;
-import java.util.Collections;
-import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 class HighScores {
     private List<Integer> scores;
+    private Integer best;
     private List<Integer> topThree;
 
     public HighScores(List<Integer> highScores) {
         this.scores = highScores;
-
-        this.topThree = new ArrayList<Integer>(highScores);
-        Collections.sort(topThree);
-        Collections.reverse(topThree);
-        this.topThree = topThree.subList(0, (topThree.size() > 2)? 3:topThree.size());
+        this.best = highScores
+            .stream()
+            .max(Integer::compareTo)
+            .get();
+        this.topThree = highScores
+            .stream()
+            .sorted(Comparator.reverseOrder())
+            .limit(3)
+            .collect(Collectors.toList());
     }
 
     List<Integer> scores() {
@@ -24,11 +29,11 @@ class HighScores {
     }
 
     Integer personalBest() {
-        return Collections.max(this.scores);
+        return this.best;
     }
 
     List<Integer> personalTopThree() {
-        return topThree;
+        return this.topThree;
     }
 
 }
