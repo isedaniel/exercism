@@ -23,5 +23,4 @@ class Acronym {
     String get() {
         return this.acronym;
     }
-
 }
