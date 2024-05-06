@@ -1,17 +1,10 @@
-import java.util.HashSet;
-import java.util.Set;
-
 public class PangramChecker {
+    private final static int LETTERS = 26;
 
     public boolean isPangram(String input) {
-        Set<Character> letters = new HashSet<Character>();
-        for (char c : input.toCharArray()) {
-            if (Character.isLetter(c))
-            letters.add(Character.toLowerCase(c));
-        }
-        return letters.size() == 26;
-
-        
+        return input.toLowerCase().chars()
+            .filter(Character::isLetter)
+            .distinct()
+            .count() == LETTERS;
     }
-
 }
