@@ -27,6 +27,7 @@ class ProteinTranslator {
 
     List<String> translate(String rnaSequence) {
         List<String> proteins = new ArrayList<>();
+
         Matcher codon = Pattern.compile("\\w{1,3}").matcher(rnaSequence);
         while (codon.find()) {
             String protein = codons.get(codon.group());
