@@ -1,16 +1,16 @@
 class RaindropConverter {
 
     String convert(int number) {
-        String sound = "";
+        StringBuilder sound = new StringBuilder();
         if (number % 3 == 0) 
-            sound += "Pling";
+            sound.append("Pling");
         if (number % 5 == 0) 
-            sound += "Plang";
+            sound.append("Plang");
         if (number % 7 == 0) 
-            sound += "Plong";
+            sound.append("Plong");
 
-        if (sound != "") return sound;
-        return "" + number;
+        return (sound.length() > 0) ? sound.toString() :
+            Integer.toString(number);
     }
 
 }
