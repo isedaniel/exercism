@@ -1,7 +1,16 @@
 class RaindropConverter {
 
     String convert(int number) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        String sound = "";
+        if (number % 3 == 0) 
+            sound += "Pling";
+        if (number % 5 == 0) 
+            sound += "Plang";
+        if (number % 7 == 0) 
+            sound += "Plong";
+
+        if (sound != "") return sound;
+        return "" + number;
     }
 
 }
