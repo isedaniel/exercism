@@ -1,43 +1,59 @@
+import java.util.HashMap;
+
 class SpaceAge {
+    private final double earthYears;
+    private final double seconds;
+    private final int earthYearInSeconds = 31557600;
+    private static HashMap<String, Double> periods = new HashMap<>();
+    static {
+        periods.put("Mercury",  0.2408467);
+        periods.put("Venus",    0.61519726);
+        periods.put("Mars",     1.8808158);
+        periods.put("Jupiter",  11.862615);
+        periods.put("Saturn",   29.447498);
+        periods.put("Uranus",   84.016846);
+        periods.put("Neptune",  164.79132);
+    }
 
     SpaceAge(double seconds) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        this.seconds = seconds;
+        this.earthYears = seconds / this.earthYearInSeconds;
     }
 
     double getSeconds() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        return seconds;
     }
 
     double onEarth() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        return earthYears;
     }
 
     double onMercury() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        return earthYears / periods.get("Mercury");
     }
 
     double onVenus() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        return earthYears / periods.get("Venus");
     }
 
     double onMars() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        return earthYears / periods.get("Mars");
     }
 
     double onJupiter() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        return earthYears / periods.get("Jupiter");
     }
 
     double onSaturn() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        return earthYears / periods.get("Saturn");
     }
 
     double onUranus() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        return earthYears / periods.get("Uranus");
     }
 
     double onNeptune() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        return earthYears / periods.get("Neptune");
     }
 
 }
