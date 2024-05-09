@@ -1,40 +1,33 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class DiamondPrinter {
 
-    List<String> printToList(char a) {
+    List<String> printToList(char c) {
+        int size = 2 * (c - 'A') + 1;
+
         List<String> diamond = new ArrayList<>();
-        for (int i=0; i<=a-'A'; i++) {
-            diamond.add(getRow((char) ('A' + i), a));
+        for (int i=0; i<size / 2 + 1; i++) {
+            diamond.add(i, getRow((char) ('A' + i), size));
+            diamond.add(i, getRow((char) ('A' + i), size));
         }
-        for (int i=1; i<=a-'A'; i++) {
-            diamond.add(getRow((char)(a - i), a));
-        }
+        diamond.remove(size / 2);
+
         return diamond;
     }
 
-    private static String getRow(char c, char diamond) {
-        StringBuilder row = new StringBuilder();
-        if (c == 'A') {
-            row.append(repeat(' ', diamond - c));
-            row.append(c);
-            row.append(repeat(' ', diamond - c));
-        }
-        else {
-            row.append(repeat(' ', diamond - c));
-            row.append(c);
-            row.append(repeat(' ', 2 * (c - 'B') + 1));
-            row.append(c);
-            row.append(repeat(' ', diamond - c));
-        }
-        return row.toString();
-    }
+    String getRow(char c, int size) {
+        int offset = c - 'A';
+        int lIndex = size / 2 - offset;
+        int rIndex = size / 2 + offset;
 
-    private static String repeat(char c, int count) {
-        if (count == 0)
-            return "";
-        return new String(new char[count]).replace('\0', c);
+        char[] row = new char[size];
+        Arrays.fill(row, ' ');
+        row[lIndex] = c;
+        row[rIndex] = c;
+
+        return new String(row);
     }
 
 }
