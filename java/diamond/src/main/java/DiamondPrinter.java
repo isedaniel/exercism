@@ -8,7 +8,7 @@ class DiamondPrinter {
         int size = 2 * (c - 'A') + 1;
 
         List<String> diamond = new ArrayList<>();
-        for (int i=0; i<size / 2 + 1; i++) {
+        for (int i = 0; i < size / 2 + 1; i++) {
             diamond.add(i, getRow((char) ('A' + i), size));
             diamond.add(i, getRow((char) ('A' + i), size));
         }
