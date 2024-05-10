@@ -7,16 +7,20 @@ class DiamondPrinter {
     List<String> printToList(char c) {
         int size = 2 * (c - 'A') + 1;
 
+        // create the diamond
         List<String> diamond = new ArrayList<>();
-        for (int i = 0; i < size / 2 + 1; i++) {
+        for (int i = 0; i < size / 2; i++) {
             diamond.add(i, getRow((char) ('A' + i), size));
             diamond.add(i, getRow((char) ('A' + i), size));
         }
-        diamond.remove(size / 2);
+
+        // add central row
+        diamond.add(size / 2, getRow(c, size));
 
         return diamond;
     }
 
+    // return row of desired size with char in place
     String getRow(char c, int size) {
         int offset = c - 'A';
         int lIndex = size / 2 - offset;
