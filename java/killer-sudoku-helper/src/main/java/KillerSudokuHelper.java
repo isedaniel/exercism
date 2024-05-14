@@ -7,8 +7,11 @@ public class KillerSudokuHelper {
         throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
     }
 
-    List<List<Integer>> combinationsInCage(Integer cageSum, Integer cageSize) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+    List<List<Integer>> combinationsInCage(Integer sum, Integer size) {
+        List<List<Integer>> combinations = new ArrayList<>();
+
+
+        return combinations;
     }
 
 }
