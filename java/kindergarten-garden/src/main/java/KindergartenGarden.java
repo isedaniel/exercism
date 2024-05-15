@@ -2,24 +2,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 class KindergartenGarden {
-    final private String row1;
-    final private String row2;
+    final private String[] rows;
 
     KindergartenGarden(String garden) {
-        this.row1 = garden.split("\n")[0];
-        this.row2 = garden.split("\n")[1];
+        this.rows = garden.split("\n");
     }
 
     List<Plant> getPlantsOfStudent(String student) {
         List<Plant> plants = new ArrayList<>();
-        int offset = student.charAt(0) - 'A';
 
-        for (int i=offset; i<offset+2; i++) {
-            plants.add(Plant.getPlant(row1.charAt(i)));
-        }
-        
-        for (int i=offset; i<offset+2; i++) {
-            plants.add(Plant.getPlant(row2.charAt(i)));
+        int index = 2 * (student.charAt(0) - 'A');
+        for (String row : rows) {
+            plants.add(Plant.getPlant(row.charAt(index)));
+            plants.add(Plant.getPlant(row.charAt(index + 1)));
         }
 
         return plants;
