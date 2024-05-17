@@ -4,10 +4,15 @@ class PrimeCalculator {
         if (nth < 1)
             throw new IllegalArgumentException();
 
-        int n = 2;
-        int primes = 1;
+        // return the only even prime
+        if (nth == 1)
+            return 2;
+
+        // to test only odd numbers
+        int n = 3;
+        int primes = 2;
         while (primes<nth) {
-            n++;
+            n += 2;
             if (isPrime(n)) primes++; 
         }
         return n;
