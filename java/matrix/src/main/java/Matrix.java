@@ -1,36 +1,22 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 class Matrix {
-    private List<List<Integer>> rows = new ArrayList<>();
-    private List<List<Integer>> columns = new ArrayList<>();
+    private int[][] matrix;
 
     Matrix(String stringMatrix) {
-        for (String stringRow : stringMatrix.split("\n")) {
-            List<Integer> row = new ArrayList<>(Arrays.asList(stringRow.split(" ")))
-                .stream()
-                .map(v -> Integer.parseInt(v))
-                .toList();
-
-            this.rows.add(row);
-        }
-
-        for (int i=0; i<this.rows.get(0).size(); i++) {
-            List<Integer> column = new ArrayList<>();
-            for (int j=0; j<this.rows.size(); j++) {
-                
-                column.add(this.rows.get(j).get(i));
-            }
-            this.columns.add(column);
-        }
+        this.matrix = Arrays.stream(stringMatrix.split("\n"))
+            .map(row -> Arrays.stream(row.split(" "))
+                    .mapToInt(Integer::parseInt).toArray())
+            .toArray(int[][]::new);
     }
 
     int[] getRow(int row) {
-        return this.rows.get(row - 1).stream().mapToInt(Integer::intValue).toArray();
+        return matrix[row - 1];
     }
 
     int[] getColumn(int column) {
-        return this.columns.get(column - 1).stream().mapToInt(Integer::intValue).toArray();
+        return Arrays.stream(matrix)
+            .mapToInt(row -> row[column - 1])
+            .toArray();
     }
 }
