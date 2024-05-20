@@ -8,11 +8,6 @@ class Proverb {
     String recite() {
         if (words.length == 0) return "";
 
-        if (words.length == 1) 
-            return "And all for the want of a "
-                + words[0]
-                + ".";
-
         String proverb = "";
         for (int i=1; i<words.length; i++) {
             proverb += "For want of a " 
@@ -21,6 +16,7 @@ class Proverb {
                 + words[i]
                 + " was lost.\n";
         }
+
         return proverb 
             + "And all for the want of a "
             + words[0]
