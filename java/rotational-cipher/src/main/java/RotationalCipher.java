@@ -1,3 +1,5 @@
+import java.util.stream.Collectors;
+
 class RotationalCipher {
     private int key;
 
@@ -6,11 +8,12 @@ class RotationalCipher {
     }
 
     String rotate(String data) {
-        StringBuilder sb = new StringBuilder();
-        for (char ch : data.toCharArray()) {
-            sb.append(rotate(ch));
-        }
-        return sb.toString();
+        return data.chars()
+            .map(this::rotate)
+            .collect(StringBuilder::new,
+                     StringBuilder::appendCodePoint,
+                     StringBuilder::append)
+            .toString();
     }
 
     private Character rotate(int ch) {
