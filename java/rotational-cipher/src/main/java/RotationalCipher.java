@@ -7,17 +7,17 @@ class RotationalCipher {
 
     String rotate(String data) {
         StringBuilder sb = new StringBuilder();
-        for (char c : data.toCharArray()) {
-            if ('a' <= c && c <= 'z')
-                sb.append(Character.toChars(
-                        (c - 'a' + this.key) % 26 + 'a'));
-            else if ('A' <= c && c <= 'Z')
-                sb.append(Character.toChars(
-                        (c - 'A' + this.key) % 26 + 'A'));
-            else
-                sb.append(c);
+        for (char ch : data.toCharArray()) {
+            sb.append(rotate(ch));
         }
         return sb.toString();
     }
 
+    private Character rotate(int ch) {
+        if (Character.isAlphabetic(ch)) {
+            char index = Character.isUpperCase(ch) ? 'A' : 'a';
+            ch = (ch - index + this.key) % 26 + index;
+        }
+        return (char) ch;
+    }
 }
