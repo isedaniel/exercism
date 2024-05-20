@@ -8,16 +8,17 @@ class Proverb {
     String recite() {
         if (words.length == 0) return "";
 
-        String proverb = "";
+        StringBuilder proverb = new StringBuilder();
         for (int i=1; i<words.length; i++) {
-            proverb += "For want of a " 
+            proverb.append(
+                "For want of a " 
                 + words[i - 1]
                 + " the "
                 + words[i]
-                + " was lost.\n";
+                + " was lost.\n");
         }
 
-        return proverb 
+        return proverb.toString() 
             + "And all for the want of a "
             + words[0]
             + ".";
