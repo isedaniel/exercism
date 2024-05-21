@@ -1,11 +1,12 @@
 import java.util.List;
 
 class Sieve {
+    private int max;
+
     Sieve(int maxPrime) {
-        throw new UnsupportedOperationException("Delete this statement and provide your own implementation.");
+        this.max = maxPrime;
     }
 
     List<Integer> getPrimes() {
-        throw new UnsupportedOperationException("Delete this statement and provide your own implementation.");
     }
 }
