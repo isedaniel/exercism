@@ -21,7 +21,7 @@ class Sieve {
                 for (int j=i*i; j<=max; j+=i) {
                     isPrime[j] = false;
                 }
-            };
+            }
         }
 
         primes = IntStream.range(0, max+1)
