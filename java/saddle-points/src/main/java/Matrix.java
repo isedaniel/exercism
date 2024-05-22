@@ -17,10 +17,9 @@ class Matrix {
         }
 
         Set<MatrixCoordinate> minInCol = new HashSet<>();
-        for (int i=0; i<values.get(0).size(); i++) {
+        for (int colIndex=0; colIndex<values.get(0).size(); colIndex++) {
             minInCol.addAll(getMinInCol(
-                        getColumn(values, i),
-                        i));
+                        getColumn(values, colIndex), colIndex));
         }
 
         saddlePoints.addAll(maxInRow);
