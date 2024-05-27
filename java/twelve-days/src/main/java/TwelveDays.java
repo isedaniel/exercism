@@ -32,14 +32,12 @@ class TwelveDays {
     String verse(int number) {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("On the ");
-        sb.append(day[number - 1]);
-        sb.append(" day of Christmas my true love gave to me: ");
+        sb.append(firstVerse(number));
 
-
-        for (int i=number; i>0; i--) {
-            sb.append(song[i - 1]);
+        for (int i=number - 1; i>=0; i--) {
+            sb.append(song[i]);
         }
+
         return sb.toString();
     }
 
@@ -57,5 +55,14 @@ class TwelveDays {
     
     String sing() {
         return verses(1, 12);
+    }
+
+    private String firstVerse(int number) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("On the ");
+        sb.append(day[number - 1]);
+        sb.append(" day of Christmas my true love gave to me: ");
+
+        return sb.toString();
     }
 }
