@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class Yacht {
     private int score;
 
@@ -24,12 +26,40 @@ class Yacht {
             this.score = count(dice, 6) * 6;
         }
         else if (yachtCategory == YachtCategory.FULL_HOUSE) {
-            this.score = (count(dice, 1) +
-                count(dice, 2) +
-                count(dice, 3) +
-                count(dice, 4) +
-                count(dice, 5) +
-                count(dice, 6) == 5);
+            int[] scores = new int[6];
+            int sum = 0;
+            for (int i=1; i<=6; i++) {
+                scores[i-1] = count(dice, i);
+                sum += count(dice, i) * i;
+            }
+            Arrays.sort(scores);
+            this.score = (scores[5] == 3 && scores[4] == 2) ? sum : 0;
+        }
+        else if (yachtCategory == YachtCategory.FOUR_OF_A_KIND) {
+            int[] scores = new int[6];
+            int sum = 0;
+            for (int i=1; i<=6; i++) {
+                scores[i-1] = count(dice, i);
+                if (count(dice, i) >= 4) sum += i * 4;
+            }
+            Arrays.sort(scores);
+            this.score = (scores[5] >= 4) ? sum : 0;
+        }
+        else if (yachtCategory == YachtCategory.LITTLE_STRAIGHT) {
+            Arrays.sort(dice);
+            int[] straight = new int[]{1, 2, 3, 4, 5};
+            this.score = (Arrays.equals(dice, straight)) ? 30 : 0;
+        }
+        else if (yachtCategory == YachtCategory.BIG_STRAIGHT) {
+            Arrays.sort(dice);
+            int[] straight = new int[]{2, 3, 4, 5, 6};
+            this.score = (Arrays.equals(dice, straight)) ? 30 : 0;
+        }
+        else {
+            int sum = 0;
+            for (int d : dice) {
+                this.score += d;
+            }
         }
     }
 
