@@ -15,7 +15,7 @@ class Allergies {
     List<Allergen> getList() {
         return Arrays.asList(Allergen.values())
             .stream()
-            .filter(a -> this.isAllergicTo(a))
+            .filter(this::isAllergicTo)
             .toList();
     }
 }
