@@ -1,15 +1,21 @@
+import java.util.Arrays;
 import java.util.List;
 
 class Allergies {
+    private final int score;
+
     Allergies(int score) {
-        throw new UnsupportedOperationException("Please implement the Allergies constructor");
+        this.score = score;
     }
 
     boolean isAllergicTo(Allergen allergen) {
-        throw new UnsupportedOperationException("Please implement the isAllergicTo method");
+        return (allergen.getScore() & this.score) > 0;
     }
 
     List<Allergen> getList() {
-        throw new UnsupportedOperationException("Please implement the getList method");
+        return Arrays.asList(Allergen.values())
+            .stream()
+            .filter(a -> this.isAllergicTo(a))
+            .toList();
     }
 }
