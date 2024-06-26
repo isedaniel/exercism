@@ -2,16 +2,16 @@ class Bob {
 
     String hey(String s) {
         s = s.trim();
-        if (s.isEmpty()) {
-            return "Fine. Be that way!";
-        }
-        else if (yell(s) && question(s)) {
+
+        if (s.isEmpty()) return "Fine. Be that way!";
+
+        if (yell(s) && question(s)) 
             return "Calm down, I know what I'm doing!";
-        } else if (question(s)) {
-            return "Sure.";
-        } else if (yell(s)) {
-            return "Whoa, chill out!";
-        }
+
+        if (question(s)) return "Sure.";
+
+        if (yell(s)) return "Whoa, chill out!";
+
         return "Whatever.";
     }
 
@@ -26,7 +26,7 @@ class Bob {
     }
 
     boolean question(String s) {
-        return s.charAt(s.length() - 1) == '?';
+        return s.endsWith("?");
     }
 
 }
