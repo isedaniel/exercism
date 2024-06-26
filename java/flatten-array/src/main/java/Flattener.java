@@ -1,9 +1,14 @@
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class Flattener {
 
     <T> List<T> flatten(List<T> list) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        return list.stream()
+            .flatMap(Collection::stream)
+            .collect(Collectors.toList());
     }
 
 }
