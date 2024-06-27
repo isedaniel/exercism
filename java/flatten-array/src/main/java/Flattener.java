@@ -1,13 +1,16 @@
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 class Flattener {
 
-    <T> List<T> flatten(List<T> list) {
+    public static List<Object> flatten(List<Object> list) {
         return list.stream()
-            .flatMap(Collection::stream)
+            .flatMap(e -> e instanceof List ?
+                    Flattener.flatten((List<Object>) e).stream() :
+                    Stream.of(e))
+            .filter(Objects::nonNull)
             .collect(Collectors.toList());
     }
 
